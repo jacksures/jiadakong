@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>教职员工端 - 幼儿园小程序</title>
+    <!-- 样式文件 -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>教职员工端 - 幼儿园小程序</h1>
+    </header>
+    <main>
+        <section class="notice">
+            <h2>发布通知</h2>
+            <form id="noticeForm">
+                <label for="noticeTitle">标题：</label>
+                <input type="text" id="noticeTitle" name="noticeTitle" required><br>
+                <label for="noticeContent">内容：</label>
+                <textarea id="noticeContent" name="noticeContent" rows="4" required></textarea><br>
+                <button type="submit">发布通知</button>
+            </form>
+        </section>
+        <section class="schedule">
+            <h2>编辑日程安排</h2>
+            <form id="scheduleForm">
+                <label for="scheduleDate">日期：</label>
+                <input type="date" id="scheduleDate" name="scheduleDate" required><br>
+                <label for="scheduleActivity">活动：</label>
+                <input type="text" id="scheduleActivity" name="scheduleActivity" required><br>
+                <button type="submit">发布日程</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>© 2024 幼儿园小程序</p>
+    </footer>
+
+    <!-- JavaScript 文件 -->
+    <script src="script.js"></script>
+</body>
+</html>
+
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header, footer {
+    background-color: #336699;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+main {
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+input[type="text"], input[type="date"], textarea {
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 5px 10px;
+    background-color: #336699;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #255785;
+}
+
+// script.js
+
+// 监听通知发布表单提交事件
+const noticeForm = document.getElementById("noticeForm");
+noticeForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+    const noticeTitle = document.getElementById("noticeTitle").value;
+    const noticeContent = document.getElementById("noticeContent").value;
+    // 这里可以将标题和内容发送到后端进行处理
+    console.log("发布通知：", noticeTitle, noticeContent);
+    // 清空表单
+    this.reset();
+});
+
+// 监听日程发布表单提交事件
+const scheduleForm = document.getElementById("scheduleForm");
+scheduleForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+    const scheduleDate = document.getElementById("scheduleDate").value;
+    const scheduleActivity = document.getElementById("scheduleActivity").value;
+    // 这里可以将日期和活动发送到后端进行处理
+    console.log("发布日程：", scheduleDate, scheduleActivity);
+    // 清空表单
+    this.reset();
+});
